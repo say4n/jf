@@ -22,7 +22,10 @@ it can turn highly nested json blobs like:
         {
             "other": ["stuff"]
         }
-    ]
+    ],
+    "even": {
+        "more": "data"
+    }
 }
 ```
 
@@ -35,6 +38,7 @@ into
     "this.is.nested.quite.deep.1" : "that",
     "this.is.nested.quite.deep.2" : "is",
     "this.is.nested.quite.deep.3" : "fine",
-    "some.0.other.0": "stuff"
+    "some.0.other.0": "stuff",
+    "even.more": "data"
 }
 ```
