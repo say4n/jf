@@ -1,10 +1,10 @@
-use std::io::{self, Write};
+use std::io::{self, Read, Write};
 
 fn main() -> io::Result<()> {
-    let mut buffer = String::new();
-    io::stdin().read_line(&mut buffer)?;
+    let mut buffer = Vec::<u8>::new();
+    io::stdin().read_to_end(&mut buffer)?;
 
     let mut stdout = io::stdout().lock();
-    writeln!(stdout, "{}", buffer)?;
+    stdout.write_all(&buffer)?;
     Ok(())
 }
