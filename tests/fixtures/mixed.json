@@ -1,0 +1,21 @@
+{
+    "this": {
+        "is": {
+            "nested": {
+                "quite": {
+                    "deep": ["but", "that", "is", "fine"]
+                }
+            }
+        }
+    },
+    "some" : [
+        {
+            "other": ["stuff"]
+        }
+    ],
+    "even": {
+        "more": "data",
+        "boolean": true,
+        "number": 2
+    }
+}
