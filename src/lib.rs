@@ -1,7 +1,7 @@
 use serde_json::{json, Map, Value};
 
-pub fn flatten(root: Value) -> Value {
-    let _flattened = _flatten_impl(root, &String::from(""));
+pub fn flatten(root: Value, separtor: &String) -> Value {
+    let _flattened = _flatten_impl(root, &String::from(""), separtor);
     let mut flattened = Map::new();
 
     match _flattened {
@@ -16,7 +16,7 @@ pub fn flatten(root: Value) -> Value {
     return Value::Object(flattened);
 }
 
-fn _flatten_impl(root: Value, key: &String) -> Value {
+fn _flatten_impl(root: Value, key: &String, separtor: &String) -> Value {
     // println!("key: {:?}", key);
 
     match root {
@@ -28,8 +28,8 @@ fn _flatten_impl(root: Value, key: &String) -> Value {
             let mut flattened_array = Map::new();
 
             for (index, item) in items.iter().enumerate() {
-                let subkey = format!("{}.{}", key, index);
-                let parsed_subtree = _flatten_impl(item.clone(), &subkey);
+                let subkey = format!("{}{}{}", key, &separtor, index);
+                let parsed_subtree = _flatten_impl(item.clone(), &subkey, &separtor);
 
                 match parsed_subtree {
                     Value::Bool(value) => flattened_array.insert(subkey, Value::Bool(value)),
@@ -52,8 +52,8 @@ fn _flatten_impl(root: Value, key: &String) -> Value {
             let mut flattened_dict = Map::new();
 
             for (nested_key, nested_value) in items {
-                let subkey = format!("{}.{}", key, nested_key);
-                let parsed_subtree = _flatten_impl(nested_value.clone(), &subkey);
+                let subkey = format!("{}{}{}", key, &separtor, nested_key);
+                let parsed_subtree = _flatten_impl(nested_value.clone(), &subkey, &separtor);
 
                 match parsed_subtree {
                     Value::Bool(value) => flattened_dict.insert(subkey, Value::Bool(value)),

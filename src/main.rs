@@ -25,6 +25,9 @@ use jf::flatten;
 struct Args {
     #[arg(short, long, value_name = "path_to_file.json")]
     filename: Option<String>,
+    
+    #[arg(short, long, default_value=".")]
+    separator: String,
 }
 
 fn main() -> io::Result<()> {
@@ -50,7 +53,7 @@ fn main() -> io::Result<()> {
     };
 
     let json_tree = serde_json::from_slice(&buffer)?;
-    let flat_json_tree = flatten(json_tree);
+    let flat_json_tree = flatten(json_tree, &args.separator);
 
     println!("{}", &flat_json_tree);
     Ok(())

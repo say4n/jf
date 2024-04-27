@@ -13,7 +13,7 @@ mod tests {
         let json_tree: Value = serde_json::from_str(&mixed).unwrap();
         let jf_tree: Value = serde_json::from_str(&mixed_jf).unwrap();
 
-        let flat_json_tree = flatten(json_tree);
+        let flat_json_tree = flatten(json_tree, &String::from("."));
 
         assert_eq!(flat_json_tree, jf_tree);
     }
