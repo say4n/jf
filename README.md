@@ -24,7 +24,9 @@ it can turn highly nested json blobs like:
         }
     ],
     "even": {
-        "more": "data"
+        "more": "data",
+        "boolean": true,
+        "number": 2
     }
 }
 ```
@@ -32,14 +34,15 @@ it can turn highly nested json blobs like:
 into
 
 ```json
-
 {
-    "this.is.nested.quite.deep.0" : "but",
-    "this.is.nested.quite.deep.1" : "that",
-    "this.is.nested.quite.deep.2" : "is",
-    "this.is.nested.quite.deep.3" : "fine",
-    "some.0.other.0": "stuff",
-    "even.more": "data"
+  "even.boolean": true,
+  "even.more": "data",
+  "even.number": 2,
+  "some.0.other.0": "stuff",
+  "this.is.nested.quite.deep.0": "but",
+  "this.is.nested.quite.deep.1": "that",
+  "this.is.nested.quite.deep.2": "is",
+  "this.is.nested.quite.deep.3": "fine"
 }
 ```
 
