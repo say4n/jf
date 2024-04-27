@@ -1,6 +1,6 @@
 [package]
 name = "jf"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 repository = "https://github.com/say4n/jf/"
 description = "flatten them json"
@@ -26,7 +26,7 @@ ci = ["github"]
 # The installers to generate for each app
 installers = ["shell", "powershell", "npm", "homebrew"]
 # A GitHub repo to push Homebrew formulas to
-tap = "say4n/say4n"
+tap = "say4n/homebrew-say4n"
 # Target platforms to build apps for (Rust target-triple syntax)
 targets = ["aarch64-apple-darwin", "x86_64-apple-darwin", "x86_64-unknown-linux-gnu", "x86_64-pc-windows-msvc"]
 # The archive format to use for windows builds (defaults .zip)
