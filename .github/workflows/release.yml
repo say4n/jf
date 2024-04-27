@@ -249,7 +249,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          repository: "say4n/homebrew-say4n"
+          repository: "say4n/homebrew-tap"
           token: ${{ secrets.HOMEBREW_TAP_TOKEN }}
       # So we have access to the formula
       - name: Fetch local artifacts
