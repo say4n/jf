@@ -5,7 +5,6 @@ mod tests {
     use jf::flatten;
     use serde_json::Value;
 
-
     #[test]
     fn test_mixed_json() {
         let mixed = read_to_string("tests/fixtures/mixed.json").unwrap();
@@ -13,7 +12,7 @@ mod tests {
 
         let json_tree: Value = serde_json::from_str(&mixed).unwrap();
         let jf_tree: Value = serde_json::from_str(&mixed_jf).unwrap();
-        
+
         let flat_json_tree = flatten(json_tree);
 
         assert_eq!(flat_json_tree, jf_tree);
