@@ -1,6 +1,19 @@
 # jf
 flatten them json
 
+## usage
+
+```
+$ jf -f foo.json
+{"foo.bar.0":"baz"}
+
+$ jf --filename foo.json
+{"foo.bar.0":"baz"}
+
+$ echo '{"foo": {"bar": ["baz"]}}' | jf
+{"foo.bar.0":"baz"}
+```
+
 ## intent
 
 handling nested json data is messy, `$ jf` comes to the rescue.
@@ -45,5 +58,3 @@ into
   "this.is.nested.quite.deep.3": "fine"
 }
 ```
-
-with `$ cat data.json | jf`
