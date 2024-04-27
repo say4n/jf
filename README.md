@@ -14,6 +14,15 @@ $ echo '{"foo": {"bar": ["baz"]}}' | jf
 {"foo.bar.0":"baz"}
 ```
 
+## options
+
+```
+  -f, --filename <path_to_file.json>
+  -s, --separator <SEPARATOR>         [default: .]
+  -h, --help                          Print help
+  -V, --version                       Print version
+```
+
 ## intent
 
 handling nested json data is messy, `$ jf` comes to the rescue.
