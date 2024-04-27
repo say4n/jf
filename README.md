@@ -21,6 +21,7 @@ $ echo '{"foo": {"bar": ["baz"]}}' | jf
 ```
   -f, --filename <path_to_file.json>
   -s, --separator <SEPARATOR>         [default: .]
+  -p, --pretty
   -h, --help                          Print help
   -V, --version                       Print version
 ```

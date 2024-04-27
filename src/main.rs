@@ -4,7 +4,7 @@ use std::{
     process::exit,
 };
 
-use clap::{command, CommandFactory, Parser};
+use clap::{command, ArgAction, CommandFactory, Parser};
 use jf::flatten;
 
 #[derive(Parser, Debug)]
@@ -28,6 +28,9 @@ struct Args {
     
     #[arg(short, long, default_value=".")]
     separator: String,
+
+    #[arg(short, long, action=ArgAction::SetTrue)]
+    pretty: bool,
 }
 
 fn main() -> io::Result<()> {
@@ -55,6 +58,10 @@ fn main() -> io::Result<()> {
     let json_tree = serde_json::from_slice(&buffer)?;
     let flat_json_tree = flatten(json_tree, &args.separator);
 
-    println!("{}", &flat_json_tree);
+    if !args.pretty {
+        println!("{}", &flat_json_tree);
+    } else {
+        println!("{}", serde_json::to_string_pretty(&flat_json_tree)?);
+    }
     Ok(())
 }
