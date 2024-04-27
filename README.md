@@ -1,7 +1,9 @@
-# jf
+# `$ jf`
 flatten them json
 
 ## usage
+
+grab the latest `$ jf` from the [releases tab](https://github.com/say4n/jf/releases/) for your platform
 
 ```
 $ jf -f foo.json
