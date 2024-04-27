@@ -42,3 +42,5 @@ into
     "even.more": "data"
 }
 ```
+
+with `$ cat data.json | jf`
