@@ -1,10 +1,11 @@
 [package]
 name = "jf"
-version = "0.2.0"
+version = "0.2.1"
 edition = "2021"
 repository = "https://github.com/say4n/jf/"
 description = "flatten them json"
 license = "MIT"
+authors = ["say4n"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -24,7 +25,7 @@ cargo-dist-version = "0.13.3"
 # CI backends to support
 ci = ["github"]
 # The installers to generate for each app
-installers = ["shell", "powershell", "npm", "homebrew"]
+installers = ["shell", "powershell", "homebrew"]
 # A GitHub repo to push Homebrew formulas to
 tap = "say4n/homebrew-tap"
 # Target platforms to build apps for (Rust target-triple syntax)
