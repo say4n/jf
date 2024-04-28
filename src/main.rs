@@ -25,8 +25,8 @@ use jf::flatten;
 struct Args {
     #[arg(short, long, value_name = "path_to_file.json")]
     filename: Option<String>,
-    
-    #[arg(short, long, default_value=".")]
+
+    #[arg(short, long, default_value = ".")]
     separator: String,
 
     #[arg(short, long, action=ArgAction::SetTrue)]
@@ -41,7 +41,7 @@ fn main() -> io::Result<()> {
 
     match args.filename {
         Some(filename) => {
-            buffer = read(filename)?;
+            buffer = read(filename).expect("Failed to read file");
         }
         None => {
             let input = std::io::stdin();
@@ -50,18 +50,18 @@ fn main() -> io::Result<()> {
                 let _ = cmd.print_long_help();
                 exit(1)
             } else {
-                io::stdin().read_to_end(&mut buffer)?;
+                io::stdin().read_to_end(&mut buffer).expect("Failed to read from stdin");
             }
         }
     };
 
-    let json_tree = serde_json::from_slice(&buffer)?;
+    let json_tree = serde_json::from_slice(&buffer).expect("Failed to parse JSON");
     let flat_json_tree = flatten(json_tree, &args.separator);
 
     if !args.pretty {
         println!("{}", &flat_json_tree);
     } else {
-        println!("{}", serde_json::to_string_pretty(&flat_json_tree)?);
+        println!("{}", serde_json::to_string_pretty(&flat_json_tree).expect("Failed to pretty print JSON"));
     }
     Ok(())
 }
